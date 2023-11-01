@@ -11,6 +11,7 @@ const packageSchema = new mongoose.Schema({
 		enum: ["Easy Peasy", "Nice and Breezy", "Hard and Tough"],
 	},
 	excursions: Number,
+	onSale: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model("Package", packageSchema);

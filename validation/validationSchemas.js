@@ -12,4 +12,5 @@ module.exports.packageSchema = Joi.object({
 		"Hard and Tough"
 	),
 	excursions: Joi.number().min(1),
+	onSale: Joi.boolean(),
 });

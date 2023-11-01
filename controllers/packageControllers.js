@@ -6,7 +6,12 @@ const service = new PackageService();
 class PackageControllers {
 	async getAllPackages(req, res) {
 		const result = await service.getAll();
-		res.send(result);
+		if (req.query) {
+			const { price } = req.query;
+			const filter = result.filter((el) => el.price < price);
+			return res.send(filter);
+		}
+		return res.send(result);
 	}
 
 	async createPackage(req, res) {
@@ -20,17 +25,17 @@ class PackageControllers {
 
 	async getPackageById(req, res) {
 		const result = await service.getById(req.params.id);
-		res.send(result);
+		return res.send(result);
 	}
 
 	async updatePackageById(req, res) {
 		const result = await service.updateById(req.params.id, req.body);
-		res.redirect(`/packages/${result._id}`);
+		return res.redirect(`/packages/${result._id}`);
 	}
 
 	async deletePackageById(req, res) {
 		await service.deleteById(req.params.id);
-		res.redirect("/packages");
+		return res.redirect("/packages");
 	}
 }
 

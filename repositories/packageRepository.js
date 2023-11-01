@@ -16,7 +16,6 @@ class PackageRepository {
 
 	async getByLocation(location) {
 		return await Package.find({ location: location });
-		// return await Package.find({ location }); <- Check if this is different
 	}
 
 	async getByPrice(price) {
@@ -25,6 +24,10 @@ class PackageRepository {
 
 	async getByDifficulty(difficulty) {
 		return await Package.find({ difficulty: difficulty });
+	}
+
+	async getOnSale() {
+		return await Package.find({ onSale: true });
 	}
 
 	async updateById(_id, updatedPackage) {

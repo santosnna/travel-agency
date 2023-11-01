@@ -7,17 +7,16 @@ class PackageService {
 		return await repository.create(newPackage);
 	}
 
-	// Check to see if it runs Synchronously
-	createOnePackage(newPackage) {
-		return repository.create(newPackage);
-	}
-
 	async getAll() {
 		return await repository.getAll();
 	}
 
 	async getById(_id) {
 		return await repository.getById(_id);
+	}
+
+	async getOnSale() {
+		return await repository.getOnSale();
 	}
 
 	async updateById(_id, updatedPackage) {
