@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const packagesSchema = new mongoose.Schema({
+const packageSchema = new mongoose.Schema({
 	name: String,
 	location: String,
 	price: Number,
@@ -13,4 +13,4 @@ const packagesSchema = new mongoose.Schema({
 	excursions: Number,
 });
 
-module.exports = mongoose.model("Package", packagesSchema);
+module.exports = mongoose.model("Package", packageSchema);

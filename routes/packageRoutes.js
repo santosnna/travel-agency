@@ -1,8 +1,8 @@
 const router = require("express").Router();
 
-const DestinationControllers = require("../controllers/destinationControllers");
+const PackageControllers = require("../controllers/packageControllers");
 
-const controller = new DestinationControllers();
+const controller = new PackageControllers();
 
 router.get("/", controller.getAllPackages);
 router.post("/", controller.createPackage);

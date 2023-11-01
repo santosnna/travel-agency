@@ -1,6 +1,6 @@
-const Package = require("../models/packages");
+const Package = require("../models/package");
 
-class DestinationRepository {
+class PackageRepository {
 	async create(newPackage) {
 		const { _id } = await new Package(newPackage).save();
 		return await Package.findById(_id);
@@ -14,6 +14,19 @@ class DestinationRepository {
 		return await Package.findById(_id);
 	}
 
+	async getByLocation(location) {
+		return await Package.find({ location: location });
+		// return await Package.find({ location }); <- Check if this is different
+	}
+
+	async getByPrice(price) {
+		return await Package.find({ price: price });
+	}
+
+	async getByDifficulty(difficulty) {
+		return await Package.find({ difficulty: difficulty });
+	}
+
 	async updateById(_id, updatedPackage) {
 		await Package.findByIdAndUpdate(_id, updatedPackage);
 		return await Package.findById(_id);
@@ -24,4 +37,4 @@ class DestinationRepository {
 	}
 }
 
-module.exports = DestinationRepository;
+module.exports = PackageRepository;

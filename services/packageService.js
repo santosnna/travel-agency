@@ -1,6 +1,6 @@
-const DestinationRepository = require("../repositories/destinationRepository");
+const PackageRepository = require("../repositories/packageRepository");
 
-const repository = new DestinationRepository();
+const repository = new PackageRepository();
 
 class PackageService {
 	async createPackage(newPackage) {

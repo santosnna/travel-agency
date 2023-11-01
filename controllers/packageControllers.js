@@ -2,16 +2,20 @@ const PackageService = require("../services/packageService");
 
 const service = new PackageService();
 
-class DestinationControllers {
+class PackageControllers {
 	async getAllPackages(req, res) {
 		const result = await service.getAll();
 		res.send(result);
 	}
 
 	async createPackage(req, res) {
+		const { excursions } = req.body;
 		console.log(req.body);
+		if (excursions.length > 0) {
+			console.log(excursions);
+		}
 		const { _id } = await service.createPackage(req.body);
-		res.redirect(`/destinations/${_id}`);
+		res.redirect(`/packages/${_id}`);
 	}
 
 	async getPackageById(req, res) {
@@ -21,13 +25,13 @@ class DestinationControllers {
 
 	async updatePackageById(req, res) {
 		const result = await service.updateById(req.params.id, req.body);
-		res.redirect(`/destinations/${result._id}`);
+		res.redirect(`/packages/${result._id}`);
 	}
 
 	async deletePackageById(req, res) {
 		await service.deleteById(req.params.id);
-		res.redirect("/destinations");
+		res.redirect("/packages");
 	}
 }
 
-module.exports = DestinationControllers;
+module.exports = PackageControllers;

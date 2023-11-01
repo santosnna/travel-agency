@@ -1,8 +1,8 @@
 const router = require("express").Router();
 
-const destinationRoutes = require("./destinationRoutes");
+const packageRoutes = require("./packageRoutes");
 
-router.use("/destinations", destinationRoutes);
+router.use("/packages", packageRoutes);
 
 router.get("/", (req, res) => {
 	res.send("Welcome to the home page.");
