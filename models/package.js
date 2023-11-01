@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const packageSchema = new mongoose.Schema({
-	name: String,
+	name: { type: String, required: true },
 	location: String,
 	price: Number,
 	description: String,

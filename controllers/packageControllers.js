@@ -1,4 +1,5 @@
 const PackageService = require("../services/packageService");
+const { packageSchema } = require("../validation/validationSchemas");
 
 const service = new PackageService();
 
@@ -9,13 +10,12 @@ class PackageControllers {
 	}
 
 	async createPackage(req, res) {
-		const { excursions } = req.body;
-		console.log(req.body);
-		if (excursions.length > 0) {
-			console.log(excursions);
+		const { error } = packageSchema.validate(req.body);
+		if (!error) {
+			console.log(req.body);
+			const { _id } = await service.createPackage(req.body);
+			return res.redirect(`/packages/${_id}`);
 		}
-		const { _id } = await service.createPackage(req.body);
-		res.redirect(`/packages/${_id}`);
 	}
 
 	async getPackageById(req, res) {
