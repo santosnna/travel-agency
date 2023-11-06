@@ -8,7 +8,7 @@ const controller = new PackageControllers();
 router.get("/", controller.getAllPackages);
 router.post("/", validatePackage, controller.createPackage);
 router.get("/:id", controller.getPackageById);
-router.put("/:id", validatePackage, controller.updatePackageById);
-router.delete("/:id", controller.deletePackageById);
+router.put("/:id/edit", validatePackage, controller.updatePackageById);
+router.delete("/:id/delete", controller.deletePackageById);
 
 module.exports = router;

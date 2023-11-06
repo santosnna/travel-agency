@@ -11,20 +11,24 @@ class PackageService {
 		return await repository.getAll();
 	}
 
-	async getById(_id) {
-		return await repository.getById(_id);
+	async getById(id) {
+		return await repository.getById(id);
+	}
+
+	async getByName(name) {
+		return await repository.getByName(name);
 	}
 
 	async getOnSale() {
 		return await repository.getOnSale();
 	}
 
-	async updateById(_id, updatedPackage) {
-		return await repository.updateById(_id, updatedPackage);
+	async updateById(id, updatedPackage) {
+		return await repository.updateById(id, updatedPackage);
 	}
 
-	async deleteById(_id) {
-		await repository.deleteById(_id);
+	async deleteById(id) {
+		await repository.deleteById(id);
 	}
 }
 

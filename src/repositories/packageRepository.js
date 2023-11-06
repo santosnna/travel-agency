@@ -2,16 +2,23 @@ const Package = require("../models/package");
 
 class PackageRepository {
 	async create(newPackage) {
-		const { _id } = await new Package(newPackage).save();
-		return await Package.findById(_id);
+		return await new Package(newPackage).save();
+	}
+
+	async createMany(packagesArray) {
+		return await Package.insertMany(packagesArray);
 	}
 
 	async getAll() {
 		return await Package.find({});
 	}
 
-	async getById(_id) {
-		return await Package.findById(_id);
+	async getById(id) {
+		return await Package.findById(id);
+	}
+
+	async getByName(name) {
+		return await Package.findOne({ name: name });
 	}
 
 	async getByLocation(location) {
@@ -30,13 +37,13 @@ class PackageRepository {
 		return await Package.find({ onSale: true });
 	}
 
-	async updateById(_id, updatedPackage) {
-		await Package.findByIdAndUpdate(_id, updatedPackage);
-		return await Package.findById(_id);
+	async updateById(id, updatedPackage) {
+		await Package.findByIdAndUpdate(id, updatedPackage);
+		return await Package.findById(id);
 	}
 
-	async deleteById(_id) {
-		await Package.findByIdAndDelete(_id);
+	async deleteById(id) {
+		await Package.findByIdAndDelete(id);
 	}
 }
 
