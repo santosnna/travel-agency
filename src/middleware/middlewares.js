@@ -1,4 +1,4 @@
-const { packageSchema } = require("./validationSchemas");
+const { packageSchema } = require("../validation/validationSchemas");
 const ExpressError = require("../responseHandlers/ExpressError");
 
 module.exports.validatePackage = (req, res, next) => {

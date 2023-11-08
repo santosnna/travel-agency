@@ -38,7 +38,9 @@ class PackageRepository {
 	}
 
 	async updateById(id, updatedPackage) {
-		await Package.findByIdAndUpdate(id, updatedPackage);
+		await Package.findByIdAndUpdate(id, updatedPackage, {
+			runValidators: true,
+		});
 		return await Package.findById(id);
 	}
 

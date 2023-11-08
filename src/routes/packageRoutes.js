@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const PackageControllers = require("../controllers/packageControllers");
-const { validatePackage } = require("../validation/validationMiddleware");
+const { validatePackage } = require("../middleware/middlewares");
 
 const controller = new PackageControllers();
 

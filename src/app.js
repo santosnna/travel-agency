@@ -1,13 +1,17 @@
 require("dotenv").config();
 const express = require("express");
+const morgan = require("morgan");
 
+const { startDatabase } = require("./db/config");
 const routes = require("./routes/index");
 const ExpressError = require("./responseHandlers/ExpressError");
 
-require("./db/config");
+const PORT = process.env.PORT;
 
+startDatabase();
 const app = express();
 
+app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true })); // Parses the body
 app.use(express.json());
 
@@ -23,4 +27,4 @@ app.use((err, req, res, next) => {
 	res.status(statusCode).send(err);
 });
 
-app.listen(3000, () => console.log("Server is up."));
+app.listen(PORT, () => console.info("Server is up."));
