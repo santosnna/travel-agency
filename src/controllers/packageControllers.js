@@ -1,5 +1,4 @@
 const PackageService = require("../services/packageService");
-const { packageSchema } = require("../validation/validationSchemas");
 
 const service = new PackageService();
 

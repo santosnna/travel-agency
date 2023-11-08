@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { connect, populate, clean, closeDB } = require("./dbConfig");
 const { mockPackagesArray, newPackage, mockPackage } = require("./helpers");
 const PackageService = require("../src/services/packageService");
