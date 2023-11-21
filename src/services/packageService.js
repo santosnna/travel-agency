@@ -3,12 +3,12 @@ const PackageRepository = require("../repositories/packageRepository");
 const repository = new PackageRepository();
 
 class PackageService {
-	async createPackage(newPackage) {
-		return await repository.create(newPackage);
-	}
-
 	async getAll() {
 		return await repository.getAll();
+	}
+
+	async createPackage(newPackage) {
+		return await repository.create(newPackage);
 	}
 
 	async getById(id) {
@@ -19,16 +19,12 @@ class PackageService {
 		return await repository.getByName(name);
 	}
 
-	async getOnSale() {
-		return await repository.getOnSale();
-	}
-
 	async updateById(id, updatedPackage) {
 		return await repository.updateById(id, updatedPackage);
 	}
 
 	async deleteById(id) {
-		await repository.deleteById(id);
+		return await repository.deleteById(id);
 	}
 }
 
