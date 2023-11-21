@@ -20,12 +20,17 @@ class PackageRepository {
 	async updateById(id, updatedPackage) {
 		await Package.findByIdAndUpdate(id, updatedPackage, {
 			runValidators: true,
+			new: true,
 		});
 		return await Package.findById(id);
 	}
 
 	async deleteById(id) {
 		await Package.findByIdAndDelete(id);
+	}
+
+	async getPriceById(id) {
+		return (await Package.findById(id)).price;
 	}
 }
 
